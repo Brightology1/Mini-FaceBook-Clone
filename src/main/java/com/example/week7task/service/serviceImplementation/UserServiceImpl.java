@@ -17,40 +17,21 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
     }
 
-    /**
-     * CREATE operation on User
-     * @param user
-     * @return boolean(true for successful creation and false on failure to create)
-     * */
+
     public boolean createUser(User user){
         boolean flag = false;
-
-        try {
-            //password encryption
-            user.setPassword(PasswordHashing.encryptPassword(user.getPassword()));
-
-            User userData = userRepository.findPersonByEmail(user.getEmail());
-
-
+        user.setPassword(PasswordHashing.encryptPassword(user.getPassword()));
+        User userData = userRepository.findPersonByEmail(user.getEmail());
+        if(userData != null){
             if(userData == null){
                 System.out.println(user);
                 userRepository.save(user);
                 flag = true;
-            } else flag = false;
-
-        } catch (Exception e) {
-            e.printStackTrace();
+            }
         }
-
         return  flag;
     }
 
-    /**
-     * Get operation on User
-     * @param email
-     * @param password
-     * @return User object
-     * */
     public User getUser(String email, String password){
 
         User userData = null;

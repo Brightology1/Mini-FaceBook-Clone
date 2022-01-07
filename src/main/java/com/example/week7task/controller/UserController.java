@@ -28,13 +28,7 @@ public class UserController {
     @Autowired
     private PostServiceImpl postService;
 
-    /**
-     * Get request to get the login and sign up page
-     * destroys message attribute that appears as the results of redirection
-     * due to unauthorized access to this page
-     * maps objects to receive data from the forms
-     * renders the page
-     * */
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response) {
 
@@ -48,11 +42,7 @@ public class UserController {
         return mav;
     }
 
-    /**
-     * Get request to process logging out to the index page
-     * destroy every attributes saved in session
-     * redirect to index page
-     * */
+
     @RequestMapping(value = "/processLogout", method = RequestMethod.GET)
     public String logout(HttpServletRequest request, HttpServletResponse response) {
 
@@ -62,11 +52,7 @@ public class UserController {
         return "redirect:/";
     }
 
-    /**
-     * Get request to get the facebook home page
-     * maps objects to receive data from the forms
-     * renders the home page
-     * */
+
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public ModelAndView showHome(HttpServletRequest request, HttpServletResponse response) {
 
@@ -93,11 +79,6 @@ public class UserController {
         return mav;
     }
 
-    /**
-     * Post request to process user registration
-     * create a session to hold success or error message
-     * redirect to the index page
-     * */
     @RequestMapping(value = "/registerProcess", method = RequestMethod.POST)
     public String addUser(HttpServletRequest request, HttpServletResponse response,
                           @ModelAttribute("user") User user) {
@@ -113,10 +94,7 @@ public class UserController {
         return "redirect:/";
     }
 
-    /**
-     * Get request to get the login page
-     * maps objects to receive data from the forms
-     * */
+
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView showLogin(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView mav = new ModelAndView("index");
@@ -125,11 +103,7 @@ public class UserController {
         return mav;
     }
 
-    /**
-     * Post request to process user login
-     * create a session to hold success or error message
-     * redirect to the index page or home page
-     * */
+
     @RequestMapping(value = "/loginProcess", method = RequestMethod.POST)
     public String loginProcess(HttpServletRequest request, HttpServletResponse response,
                                @ModelAttribute("login") Login login) {

@@ -18,12 +18,6 @@ public class LikeController {
     @Autowired
     LikeServiceImpl likeService;
 
-    /**
-     * Post request to process like made by users
-     * redirects user if not in session
-     * saves or deletes like in or from the database, or perhaps fails
-     * redirect back to home page
-     * */
     @RequestMapping(value = "/processLike", method = RequestMethod.POST)
     public @ResponseBody
     String likePost(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws IOException {

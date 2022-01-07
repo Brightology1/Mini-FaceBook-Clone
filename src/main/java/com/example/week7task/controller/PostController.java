@@ -30,13 +30,7 @@ public class PostController {
     @Autowired
     PostServiceImpl postService;
 
-    /**
-     * Post request to process posts made by users
-     * redirects to login page if user is not in the session
-     * maps an image file to a folder then saves its name in the database
-     * save post to database or perhaps an error occurs
-     * redirects back to home
-     * */
+
     @RequestMapping(value = "/postProcessing", method = RequestMethod.POST)
     public String addUser(HttpServletRequest request, HttpServletResponse response,
                           @ModelAttribute("post") Post post, HttpSession session) {
@@ -75,11 +69,7 @@ public class PostController {
         return "redirect:/home";
     }
 
-    /**
-     * Get request to get edit ppage
-     * redirects to login page if user is not in the session
-     * renders the the edit page
-     * */
+
     @RequestMapping(value = "/edit/{post}", method = RequestMethod.GET)
     public String editComment(@PathVariable("post") Long post_id, Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 
@@ -97,12 +87,6 @@ public class PostController {
         return "edit";
     }
 
-    /**
-     * Post request to edit posts made by users
-     * redirects to login page if user is not in the session
-     * save edited post to database or perhaps an error occurs
-     * redirects back to home page
-     * */
     @RequestMapping(value = "/editProcessing", method = RequestMethod.POST)
     public String addUser(HttpServletRequest request, HttpServletResponse response, HttpSession session,
                           @ModelAttribute("post") Post post) {
@@ -120,12 +104,6 @@ public class PostController {
         return "redirect:/home";
     }
 
-    /**
-     * Post request to delete posts made by users
-     * redirects to login page if user is not in the session
-     * delete post to database or perhaps an error occurs
-     * redirects back to home page
-     * */
     @RequestMapping(value = "/deletePost", method = RequestMethod.POST)
     public String deleteComment(HttpServletRequest request,
                                 HttpServletResponse response, HttpSession session) {
@@ -146,12 +124,7 @@ public class PostController {
     }
 
 
-    /**
-     * method for reading images to a specific path
-     * @param in
-     * @param path
-     * @return boolean
-     */
+
     public boolean uploadFile(InputStream in, String path){
         boolean test = false;
 

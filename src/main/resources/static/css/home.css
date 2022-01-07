@@ -4,9 +4,9 @@ html{
     box-sizing:border-box;
     height: fit-content;
 }
-
+/*#c1d1f1;*/
 body{
-    background: #c1d1f1;
+    background: gray;
     color: #fff;
 }
 nav{

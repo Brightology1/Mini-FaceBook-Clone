@@ -1,9 +1,9 @@
 body {
-    background-color: #f0f2f5;
+    background-color: gray;
     margin: 0px;
     padding: 0px;
 }
-
+/*#f0f2f5*/
 .main-content {
     display: flex;
     justify-content: center;

@@ -12,10 +12,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class LikeServiceImpl implements LikeService {
 
-    @Autowired
-    private LikesRepository likesRepository;
-    @Autowired
-    private PostRepository postRepository;
+    private final LikesRepository likesRepository;
+    private final PostRepository postRepository;
+
+    public LikeServiceImpl(LikesRepository likesRepository, PostRepository postRepository) {
+        this.likesRepository = likesRepository;
+        this.postRepository = postRepository;
+    }
 
     /**
      * CREATE operation on Comment
@@ -28,8 +31,7 @@ public class LikeServiceImpl implements LikeService {
         boolean result = false;
 
         Post post = postRepository.findById(postId).get();
-
-        try{
+        if(post != null){
             Likes like = new Likes();
             like.setUser(user);
             like.setPost(post);
@@ -43,8 +45,6 @@ public class LikeServiceImpl implements LikeService {
             }
 
             result = true;
-        }catch (Exception e){
-            e.printStackTrace();
         }
 
         return result;
